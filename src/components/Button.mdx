@@ -1,0 +1,38 @@
+---
+name: Button
+menu: Components
+---
+
+import { Playground, Props } from 'docz'
+import { Button } from './Button.tsx'
+
+# Button
+
+Buttons make common actions more obvious and help users more easily perform them.
+
+### Best practices
+
+- Group buttons logically into sets based on usage and importance.
+- Ensure that button actions are clear and consistent.
+- The main action of a group set can be a primary button.
+- Select a single button variation and do not mix them.
+
+## Properties
+
+<Props of={Button} />
+
+## Basic usage
+
+<Playground>
+  <Button>Click me</Button>
+</Playground>
+
+
+## With different variants
+
+<Playground>
+  <Button>Click me</Button>
+  <Button primary>Click me</Button>
+  <Button disabled>Click me</Button>
+  <Button primary disabled>Click me</Button>
+</Playground>

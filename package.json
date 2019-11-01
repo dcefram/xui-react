@@ -1,0 +1,29 @@
+{
+  "private": true,
+  "name": "xjs-react",
+  "version": "2.0.0-rc.41",
+  "license": "MIT",
+  "files": [
+    "src/",
+    "doczrc.js",
+    "tsconfig.json",
+    "package.json"
+  ],
+  "scripts": {
+    "dev": "docz dev",
+    "build": "docz build"
+  },
+  "dependencies": {
+    "@emotion/core": "^10.0.22",
+    "@emotion/styled": "^10.0.14",
+    "docz": "next",
+    "polished": "^3.4.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "scheduler": "^0.15.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "^16.8.4"
+  }
+}
