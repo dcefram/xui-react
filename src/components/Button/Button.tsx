@@ -32,7 +32,7 @@ const ButtonStyled = styled('button')<ButtonProps>`
   border: 0;
   cursor: pointer;
   color: white;
-  font-size: 12px;
+  font-size: 0.75rem;
   line-height: 22px;
   margin-right: 5px;
   padding: 3px 18px;
