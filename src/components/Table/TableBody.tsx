@@ -1,29 +1,20 @@
 import React, { FunctionComponent, ReactElement } from 'react';
 import styled from '@emotion/styled';
 
-import { TableCellProps } from './TableCell';
+import { TableRowProps } from './TableRow';
 
-export interface TableHeadProps {
+export interface TableBodyProps {
   className: string;
-  children: ReactElement<TableCellProps>;
+  children: ReactElement<TableRowProps>;
 }
 
-const StyledTableBody = styled('thead')`
+const StyledTableBody = styled('tbody')`
   background-color: #212121;
   color: #ccc;
 `;
 
-const TableBody: FunctionComponent<TableHeadProps> = ({ children, ...rest }) => (
-  <StyledTableBody>
-    {
-      (React.Children.map(children, (child: ReactElement<TableCellProps>) =>
-        React.cloneElement(child, {
-          ...rest,
-          isHeader: true
-        })
-      ) as unknown) as ReactElement<TableCellProps>
-    }
-  </StyledTableBody>
+const TableBody: FunctionComponent<TableBodyProps> = ({ children, ...rest }) => (
+  <StyledTableBody>{children}</StyledTableBody>
 );
 
 export default TableBody;
