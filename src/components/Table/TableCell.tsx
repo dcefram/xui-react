@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactNode } from 'react';
 import styled from '@emotion/styled';
 
 export interface TableCellProps {
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
   isHeader?: boolean;
 }
