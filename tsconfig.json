@@ -1,12 +1,18 @@
 {
   "compilerOptions": {
-    "target": "es2015",
     "moduleResolution": "node",
     "strict": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "skipLibCheck": false,
-    "noEmit": true,
-    "jsx": "react"
+    // "noEmit": true,
+    "noLib": false,
+    "jsx": "react",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "es6"
   }
 }
