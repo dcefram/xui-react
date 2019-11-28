@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactElement } from 'react';
 import styled from '@emotion/styled';
 
-export interface TableBodyProps {
+export interface TableProps {
   className: string;
   children: ReactElement;
 }
@@ -12,8 +12,8 @@ const StyledTable = styled('table')`
   font-size: 0.75rem;
 `;
 
-const TableBody: FunctionComponent<TableBodyProps> = ({ children, ...rest }) => (
+const Table: FunctionComponent<TableProps> = ({ children, ...rest }) => (
   <StyledTable {...rest}>{children}</StyledTable>
 );
 
-export default TableBody;
+export default Table;
