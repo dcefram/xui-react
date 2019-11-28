@@ -1,1 +1,1 @@
-export { default } from './InputRange';
+export { default, InputRangeProps } from './InputRange';
