@@ -27,7 +27,7 @@ const getVariant = ({ primary }: ButtonProps) => {
   `;
 };
 
-const ButtonStyled = styled('button')<ButtonProps>`
+const StyledButton = styled('button')<ButtonProps>`
   ${getVariant};
   border: 0;
   cursor: pointer;
@@ -36,6 +36,7 @@ const ButtonStyled = styled('button')<ButtonProps>`
   line-height: 22px;
   margin-right: 5px;
   padding: 3px 18px;
+  outline: none;
 
   &:last-of-type {
     margin-right: 0;
@@ -43,7 +44,7 @@ const ButtonStyled = styled('button')<ButtonProps>`
 `;
 
 const Button: FunctionComponent<ButtonProps> = ({ children, ...props }) => (
-  <ButtonStyled {...props}>{children}</ButtonStyled>
+  <StyledButton {...props}>{children}</StyledButton>
 );
 
 export default Button;

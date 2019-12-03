@@ -1,0 +1,28 @@
+---
+name: Select
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+import Select from './Select/Select.tsx';
+import Option from './Select/Option.tsx';
+
+# Select
+
+Select is normally used for controls that has a set limit on the minimum and maximum value.
+
+## Properties
+
+<Props of={Select} />
+
+## Basic usage
+
+<Playground>
+  <Select value="Chocolates" />
+  <Select value="Chocolates" disabled />
+  <Select value="chocolates">
+    <Option value="chocolates">Chocolates</Option>
+    <Option value="tea">Tea</Option>
+    <Option value="coffee">Coffee</Option>
+  </Select>
+</Playground>
