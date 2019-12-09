@@ -1,0 +1,42 @@
+---
+name: Panel
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+import Panel from './Panel/Panel.tsx';
+
+# Panel
+
+Panels are used to group a set of related elements/content. This is often useful to group a particular set of controls based on their category.
+
+### Best practices
+
+- Group related contents in a panel
+- Group a subset of related contents in a child panel
+
+## Properties
+
+<Props of={Panel} />
+
+## Basic usage
+
+<Playground>
+  <Panel>Click me</Panel>
+  <Panel label="With a label">Here goes some content</Panel>
+</Playground>
+
+## With different variants
+
+<Playground>
+  <Panel style={{ marginBottom: '1em' }}>Here goes some content</Panel>
+  <Panel variant="dark">Here goes some content</Panel>
+</Playground>
+
+## Nested Panels
+
+<Playground>
+  <Panel label="Nest Panels">
+    <Panel variant="dark">Here goes some content</Panel>
+  </Panel>
+</Playground>

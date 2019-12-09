@@ -1,0 +1,71 @@
+---
+name: Table
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+import Table from './Table/Table.tsx';
+import TableCell from './Table/TableCell.tsx';
+import TableHead from './Table/TableHead.tsx';
+import TableBody from './Table/TableBody.tsx';
+import TableRow from './Table/TableRow.tsx';
+import Button from './Button/Button.tsx';
+
+# Table
+
+Data tables display sets of data.
+
+## Table Properties
+<Props of={Table} />
+
+## TableHead Properties
+<Props of={TableHead} />
+
+## TableBody Properties
+<Props of={TableBody} />
+
+## TableCell Properties
+<Props of={TableCell} />
+
+## Basic usage
+
+<Playground>
+  <Table style={{ width: '100%' }}>
+    <TableHead>
+      <TableCell>Channel</TableCell>
+      <TableCell>Listen</TableCell>
+    </TableHead>
+    <TableBody>
+      <TableRow>
+        <TableCell>shroud</TableCell>
+        <TableCell>
+          <Button primary>Watch</Button>
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell>Gorgc</TableCell>
+        <TableCell>
+          <Button primary>Watch</Button>
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell>DisguisedToast</TableCell>
+        <TableCell>
+          <Button primary>Watch</Button>
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell>xChocoBars</TableCell>
+        <TableCell>
+          <Button primary>Watch</Button>
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell>LilyPichu</TableCell>
+        <TableCell>
+          <Button primary>Watch</Button>
+        </TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</Playground>

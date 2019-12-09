@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from 'react'
-import { lighten, darken,transparentize } from "polished";
-import styled from '@emotion/styled'
+import React, { FunctionComponent } from 'react';
+import { lighten, darken, transparentize } from 'polished';
+import styled from '@emotion/styled';
 
 export interface ButtonProps {
   primary?: boolean;
@@ -24,24 +24,27 @@ const getVariant = ({ primary }: ButtonProps) => {
       background: ${darken(0.1, bg)};
       color: ${transparentize(0.8, 'white')}
     }
-  `
-}
+  `;
+};
 
-const ButtonStyled = styled('button')<ButtonProps>`
+const StyledButton = styled('button')<ButtonProps>`
   ${getVariant};
   border: 0;
   cursor: pointer;
   color: white;
-  font-size: 12px;
+  font-size: 0.75rem;
   line-height: 22px;
   margin-right: 5px;
   padding: 3px 18px;
+  outline: none;
 
   &:last-of-type {
     margin-right: 0;
   }
-`
+`;
 
-export const Button: FunctionComponent<ButtonProps> = ({ children, ...props }) => (
-  <ButtonStyled {...props}>{children}</ButtonStyled>
-)
+const Button: FunctionComponent<ButtonProps> = ({ children, ...props }) => (
+  <StyledButton {...props}>{children}</StyledButton>
+);
+
+export default Button;
