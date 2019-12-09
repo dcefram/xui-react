@@ -1,6 +1,6 @@
 # XJS React
 
-An unofficial/3rd-party collection of XSplit themed React UI components primarily used to create XSplit Broadcaster plugins 
+An unofficial/3rd-party collection of XSplit themed React UI components primarily used to create XSplit Broadcaster plugins
 that align with the current XSplit Broadcaster UX.
 
 ## Why bother?
@@ -13,3 +13,16 @@ This is my attempt to just create a component library that I would use while wor
 All of the UI components here are made out of assumptions, based off of existing official plugins. I do not have an official
 style guide to base it all off, but since there are a couple of official plugins already that has similar UI, it's easy to
 just mimic their feel by just winging it.
+
+## TODO
+
+- [x] Text Input
+- [x] Number Slider
+- [x] Select
+- [x] Panel
+- [x] Table
+- [x] Button
+- [ ] Toggle
+- [ ] Number Spinner
+- [ ] Checkbox
+- [ ] Radio Group
