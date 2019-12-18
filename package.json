@@ -3,16 +3,11 @@
   "name": "xjs-react",
   "version": "0.1.0",
   "license": "MIT",
-  "files": [
-    "src/",
-    "doczrc.js",
-    "tsconfig.json",
-    "package.json"
-  ],
   "scripts": {
     "dev": "docz dev",
     "build": "tsc --rootDir ./src --outDir ./build",
-    "build:docs": "docz build"
+    "build:docs": "docz build",
+    "pub": "npm run build && cd build && npm publish --access public"
   },
   "dependencies": {
     "@emotion/core": "^10.0.22",
