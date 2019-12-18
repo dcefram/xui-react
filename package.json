@@ -1,13 +1,13 @@
 {
   "private": true,
   "name": "xjs-react",
-  "version": "0.1.0",
+  "version": "0.1.3",
   "license": "MIT",
   "scripts": {
     "dev": "docz dev",
     "build": "tsc --rootDir ./src --outDir ./build",
     "build:docs": "docz build",
-    "pub": "npm run build && cd build && npm publish --access public"
+    "pub": "npm run build && node tools/prepublish.js && cd build && npm publish --access public"
   },
   "dependencies": {
     "@emotion/core": "^10.0.22",
