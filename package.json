@@ -13,6 +13,7 @@
     "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.14",
     "docz": "next",
+    "emotion-theming": "^10.0.27",
     "polished": "^3.4.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

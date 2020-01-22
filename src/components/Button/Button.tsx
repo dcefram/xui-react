@@ -2,14 +2,22 @@ import React, { FunctionComponent } from 'react';
 import { lighten, darken, transparentize } from 'polished';
 import styled from '@emotion/styled';
 
+import get from '../../helpers/get-hex';
+
 export interface ButtonProps {
   primary?: boolean;
   disabled?: boolean;
+  theme?: any;
 }
 
-const getVariant = ({ primary }: ButtonProps) => {
-  const bg = primary ? '#0C6996' : '#191919';
-  const boxShadow = primary ? 'none' : '0 0 0 1px inset #555555';
+const getVariant = ({ primary, theme }: ButtonProps) => {
+  const bg = primary
+    ? get(theme, ['colors', 'primary'], '#0C6996')
+    : get(theme, ['colors', 'defaultButton'], '#191919');
+
+  const boxShadow = primary
+    ? 'none'
+    : `0 0 0 1px inset ${get(theme, ['colors', 'defaultButtonShadow'], '#555')}`;
 
   return `
     background: ${bg};
