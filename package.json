@@ -1,6 +1,6 @@
 {
-  "private": true,
-  "name": "xjs-react",
+  "private": false,
+  "name": "@dcefram/xjs-react",
   "version": "0.1.5",
   "license": "MIT",
   "scripts": {
