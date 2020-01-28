@@ -46,7 +46,7 @@ const StyledThumb = styled('div')`
   }
 `;
 
-const Toggle: FunctionComponent<ToggleProps> = ({ checked, onChange }) => {
+function Toggle({ checked, onChange }: ToggleProps) {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleClick = useCallback(() => {
@@ -63,6 +63,6 @@ const Toggle: FunctionComponent<ToggleProps> = ({ checked, onChange }) => {
       <StyledThumb className={cname} />
     </StyledButton>
   );
-};
+}
 
 export default Toggle;
