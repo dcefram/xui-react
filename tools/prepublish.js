@@ -1,31 +1,21 @@
 const fs = require('fs');
 
-const packageJson = {
-  name: '@dcefram/xjs-react',
-  version: '0.1.2',
-  license: 'MIT',
-  repository: {
-    type: 'git',
-    url: 'https://github.com/dcefram/xjs-react.git'
-  },
-  homepage: 'https://github.com/dcefram/xjs-react.git',
-  dependencies: {
-    '@emotion/core': '^10.0.22',
-    '@emotion/styled': '^10.0.14',
-    polished: '^3.4.2',
-    react: '^16.8.6',
-    'react-dom': '^16.8.6',
-    'react-useportal': '^1.0.13',
-    scheduler: '^0.15.0'
-  }
-};
+function omit(obj, properties = []) {
+  return Object.keys(obj).reduce((stack, key) => {
+    if (properties.indexOf(key) === -1) {
+      return { ...stack, [key]: obj[key] };
+    }
+
+    return stack;
+  }, {});
+}
 
 // Bump version number based on current package.json's version
 const parentPackageJsonString = fs.readFileSync(`${process.cwd()}/package.json`, 'utf8');
 const parentPackageJson = JSON.parse(parentPackageJsonString);
 const buildPackageJson = {
-  ...packageJson,
-  version: parentPackageJson.version
+  ...omit(parentPackageJson, ['private', 'scripts', 'devDependencies']),
+  dependencies: omit(parentPackageJson.dependencies, ['docz'])
 };
 
 fs.writeFileSync(

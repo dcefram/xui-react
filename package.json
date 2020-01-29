@@ -1,8 +1,12 @@
 {
-  "private": false,
+  "private": true,
   "name": "@dcefram/xjs-react",
   "version": "0.1.5",
   "license": "MIT",
+  "repository": {
+    "url": "https://github.com/dcefram/xjs-react.git"
+  },
+  "homepage": "xjs-react.dcefram.now.sh",
   "scripts": {
     "dev": "docz dev",
     "build": "tsc --rootDir ./src --outDir ./build",
