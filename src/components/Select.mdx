@@ -6,6 +6,7 @@ menu: Components
 import { Playground, Props } from 'docz';
 import Select from './Select/Select.tsx';
 import Option from './Select/Option.tsx';
+import ThemeProvider from './ThemeProvider/ThemeProvider.tsx';
 
 # Select
 
@@ -16,13 +17,14 @@ Select is normally used for controls that has a set limit on the minimum and max
 <Props of={Select} />
 
 ## Basic usage
-
 <Playground>
-  <Select value="Chocolates" />
-  <Select value="Chocolates" disabled />
-  <Select value="chocolates">
-    <Option value="chocolates">Chocolates</Option>
-    <Option value="tea">Tea</Option>
-    <Option value="coffee">Coffee</Option>
-  </Select>
+  <ThemeProvider>
+    <Select value="Chocolates" />
+    <Select value="Chocolates" disabled />
+    <Select value="chocolates" style={{ width: 300 }}>
+      <Option value="chocolates">Chocolates</Option>
+      <Option value="tea">Tea</Option>
+      <Option value="coffee">Coffee</Option>
+    </Select>
+  </ThemeProvider>
 </Playground>
