@@ -7,6 +7,7 @@ export interface OptionProps {
   selected: boolean;
   disabled: boolean;
   onClick: (event: React.MouseEvent, value: any) => void;
+  className?: string;
 }
 
 const StyledOpton = styled('li')`
@@ -16,7 +17,8 @@ const StyledOpton = styled('li')`
   cursor: pointer;
   overflow: hidden;
 
-  &.selected:not(.disabled) {
+  &.selected:not(.disabled),
+  &:hover:not(.disabled) {
     background-color: #245f7c;
     color: #ccc;
 
@@ -56,10 +58,16 @@ const StyledOpton = styled('li')`
 const Option: FunctionComponent<OptionProps> = ({
   children,
   value,
+  selected,
+  className = '',
   onClick = () => {},
   ...rest
 }) => (
-  <StyledOpton onClick={(event: React.MouseEvent) => onClick(event, value)} {...rest}>
+  <StyledOpton
+    onClick={(event: React.MouseEvent) => onClick(event, value)}
+    className={className + (selected ? ' selected' : '')}
+    {...rest}
+  >
     {children}
   </StyledOpton>
 );

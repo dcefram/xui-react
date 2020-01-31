@@ -84,6 +84,7 @@ export const StyledContainer = styled('div')<any>`
 `;
 
 export const StyledListContainer = styled('ul')`
+  box-sizing: border-box;
   background: #060606;
   border: 1px solid #393939;
   color: #888;

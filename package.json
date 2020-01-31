@@ -1,8 +1,12 @@
 {
   "private": true,
-  "name": "xjs-react",
-  "version": "0.1.3",
+  "name": "@dcefram/xjs-react",
+  "version": "0.1.6",
   "license": "MIT",
+  "repository": {
+    "url": "https://github.com/dcefram/xjs-react.git"
+  },
+  "homepage": "xjs-react.dcefram.now.sh",
   "scripts": {
     "dev": "docz dev",
     "build": "tsc --rootDir ./src --outDir ./build",
@@ -13,6 +17,7 @@
     "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.14",
     "docz": "next",
+    "emotion-theming": "^10.0.27",
     "polished": "^3.4.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

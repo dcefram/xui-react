@@ -4,7 +4,6 @@ import React, {
   useState,
   useCallback,
   useRef,
-  ReactNode,
   useEffect
 } from 'react';
 import usePortal from 'react-useportal';
@@ -16,12 +15,20 @@ export interface SelectProps {
   children?: ReactElement<OptionProps>[];
   value?: string;
   disabled?: boolean;
+  onChange?: (value: any) => void;
 }
 
-const Select: FunctionComponent<SelectProps> = ({ value, disabled, children = [], ...rest }) => {
+const Select: FunctionComponent<SelectProps> = ({
+  value,
+  disabled,
+  onChange,
+  children = [],
+  ...rest
+}) => {
   const containerRef = useRef(null);
   const [expanded, setExpanded] = useState(false);
   const [label, setLabel] = useState('');
+  const [internalValue, setInternalValue] = useState(value);
   const [dropdownStyle, setDropdownStyle] = useState({});
   const handleValueClick = useCallback(
     event => {
@@ -59,6 +66,11 @@ const Select: FunctionComponent<SelectProps> = ({ value, disabled, children = []
       if (value === child.props.value) {
         setLabel(child.props.children as string);
         closePortal();
+        if (typeof onChange === 'function') {
+          onChange(value);
+        } else {
+          setInternalValue(value);
+        }
       }
     });
   };
@@ -74,12 +86,13 @@ const Select: FunctionComponent<SelectProps> = ({ value, disabled, children = []
     React.Children.forEach(children, (child: ReactElement<OptionProps>) => {
       if (value === child.props.value) {
         setLabel(child.props.children as string);
+        setInternalValue(child.props.value as string);
       }
     });
   }, [value]);
 
   return (
-    <StyledContainer ref={containerRef} disabled={disabled}>
+    <StyledContainer ref={containerRef} disabled={disabled} {...rest}>
       <StyledValue onClick={handleValueClick}>
         {label}
         <StyledArrow expanded={expanded} />
@@ -91,7 +104,7 @@ const Select: FunctionComponent<SelectProps> = ({ value, disabled, children = []
             {
               (React.Children.map(children, (child: ReactElement<OptionProps>) =>
                 React.cloneElement(child, {
-                  ...rest,
+                  selected: internalValue === child.props.value,
                   onClick: handleOptionClick
                 })
               ) as unknown) as ReactElement<OptionProps>
