@@ -22,7 +22,7 @@ just mimic their feel by just winging it.
 - [x] Panel
 - [x] Table
 - [x] Button
-- [ ] Toggle
-- [ ] Number Spinner
+- [x] Toggle
+- [x] Number Spinner
 - [ ] Checkbox
 - [ ] Radio Group
