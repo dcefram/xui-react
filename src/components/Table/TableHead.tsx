@@ -2,6 +2,7 @@ import React, { FunctionComponent, ReactElement } from 'react';
 import styled from '@emotion/styled';
 
 import { TableCellProps } from './TableCell';
+import TableRow, { StyledTableRow } from './TableRow';
 
 export interface TableHeadProps {
   className: string;
@@ -9,20 +10,22 @@ export interface TableHeadProps {
 }
 
 const StyledTableHead = styled('thead')`
-  background-color: #003350;
   color: white;
+  background-color: #003350;
 `;
 
 const TableHead: FunctionComponent<TableHeadProps> = ({ children, ...rest }) => (
   <StyledTableHead>
-    {
-      (React.Children.map(children, (child: ReactElement<TableCellProps>) =>
-        React.cloneElement(child, {
-          ...rest,
-          isHeader: true
-        })
-      ) as unknown) as ReactElement<TableCellProps>
-    }
+    <tr>
+      {
+        (React.Children.map(children, (child: ReactElement<TableCellProps>) =>
+          React.cloneElement(child, {
+            ...rest,
+            isHeader: true
+          })
+        ) as unknown) as ReactElement<TableCellProps>
+      }
+    </tr>
   </StyledTableHead>
 );
 

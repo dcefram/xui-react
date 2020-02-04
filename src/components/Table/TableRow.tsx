@@ -4,11 +4,11 @@ import styled from '@emotion/styled';
 import { TableCellProps } from './TableCell';
 
 export interface TableRowProps {
-  className: string;
+  className?: string;
   children: ReactElement<TableCellProps>;
 }
 
-const StyledTableRow = styled('tr')`
+export const StyledTableRow = styled('tr')`
   background-color: #212121;
   color: #ccc;
 `;
