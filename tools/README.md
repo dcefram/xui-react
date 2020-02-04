@@ -1,4 +1,4 @@
-# XJS React
+# XUI React
 
 An unofficial/3rd-party collection of XSplit themed React UI components primarily used to create XSplit Broadcaster plugins
 that align with the current XSplit Broadcaster UX.
@@ -7,13 +7,13 @@ that align with the current XSplit Broadcaster UX.
 
 ```bash
 # installation
-npm i @dcefram/xjs-react
+npm i @dcefram/xui-react
 ```
 
 To use it, simply import the component that you would want to use
 
 ```javascript
-import Button from '@dcefram/xjs-react/components/Button';
+import Button from '@dcefram/xui-react/components/Button';
 ```
 
 ## Why bother?

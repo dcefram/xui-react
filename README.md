@@ -1,4 +1,4 @@
-# XJS React
+# XUI React
 
 An unofficial/3rd-party collection of XSplit themed React UI components primarily used to create XSplit Broadcaster plugins
 that align with the current XSplit Broadcaster UX.
