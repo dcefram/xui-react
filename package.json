@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@dcefram/xui-react",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "license": "MIT",
   "repository": {
     "url": "https://github.com/dcefram/xjs-react.git"
