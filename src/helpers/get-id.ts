@@ -5,7 +5,7 @@ function getWindow() {
 
 // Need to attach to window for totally unique IDs.
 const NAMESPACE = '__xui_current_id__';
-let _global = getWindow();
+let _global: any = getWindow();
 
 if (_global[NAMESPACE] === undefined) {
   _global[NAMESPACE] = 0;
