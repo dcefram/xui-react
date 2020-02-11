@@ -92,7 +92,7 @@ export const StyledListContainer = styled('ul')`
   list-style: none;
   margin: 0;
   max-height: 150px;
-  overflow: scroll;
+  overflow: auto;
   padding: 0;
   position: absolute;
 `;
