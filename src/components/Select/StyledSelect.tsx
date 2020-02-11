@@ -50,7 +50,8 @@ export const StyledValue = styled('div')`
     line-height: 17px;
   }
 
-  &:hover ${StyledArrow}, &:active ${StyledArrow} {
+  &:hover > .xui-styled-arrow,
+  &:active > .xui-styled-arrow {
     border-top-color: #ccc;
     border-bottom-color: #ccc;
   }
@@ -70,13 +71,13 @@ export const StyledContainer = styled('div')<any>`
   }
 
   &[disabled] {
-    & ${StyledValue} {
+    & > .xui-styled-value {
       background-color: #292929;
       color: #444;
       cursor: auto;
     }
 
-    & ${StyledArrow} {
+    & > .xui-styled-arrow {
       border-top-color: #444 !important;
       border-bottom-color: #444 !important;
     }

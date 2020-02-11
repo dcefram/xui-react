@@ -93,9 +93,9 @@ const Select: FunctionComponent<SelectProps> = ({
 
   return (
     <StyledContainer ref={containerRef} disabled={disabled} {...rest}>
-      <StyledValue onClick={handleValueClick}>
+      <StyledValue className="xui-styled-value" onClick={handleValueClick}>
         {label}
-        <StyledArrow expanded={expanded} />
+        <StyledArrow className="xui-styled-arrow" expanded={expanded} />
       </StyledValue>
 
       {isOpen && (
