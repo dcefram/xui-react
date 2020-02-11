@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactElement, useState } from 'react';
-import styled from '@emotion/styled/macro';
+import styled from '@emotion/styled';
 
 import TableContext from './TableContext';
 import { StyledTableRow } from './TableRow';
@@ -15,22 +15,10 @@ export interface TableProps extends StyledTableProps {
   onSelect?: (event: React.MouseEvent<HTMLTableRowElement>, id: string | number) => void;
 }
 
-const getSelectableStyles = ({ isSelectable }: StyledTableProps) => {
-  if (isSelectable) {
-    return `${StyledTableRow}:hover {
-      background-color: #003350;
-    }`;
-  }
-
-  return '';
-};
-
 const StyledTable = styled('table')<StyledTableProps>`
   box-shadow: 0 0 0 1px #000;
   border-spacing: 0;
   font-size: 0.75rem;
-
-  ${getSelectableStyles}
 `;
 
 const Table: FunctionComponent<TableProps> = ({

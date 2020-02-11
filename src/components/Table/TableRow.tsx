@@ -12,6 +12,7 @@ export interface TableRowProps {
 }
 
 interface StyledTableRowProps {
+  isSelectable?: boolean;
   selected?: boolean;
 }
 
@@ -20,7 +21,21 @@ export const StyledTableRow = styled('tr')<StyledTableRowProps>`
   color: #ccc;
   height: 40px;
 
-  ${({ selected }) => (selected ? `background-color: #003350;` : '')}
+  ${({ selected, isSelectable }) => {
+    let css = '';
+
+    if (selected) {
+      css = 'background-color: #003350;';
+    }
+
+    if (isSelectable) {
+      css += `&:hover {
+        background-color: #003350;
+      }`;
+    }
+
+    return css;
+  }}
 `;
 
 const TableRow: FunctionComponent<TableRowProps> = ({ children, id, selected, ...rest }) => {
@@ -34,7 +49,11 @@ const TableRow: FunctionComponent<TableRowProps> = ({ children, id, selected, ..
   };
 
   return (
-    <StyledTableRow selected={context.selected === id} onClick={handleClick}>
+    <StyledTableRow
+      selected={context.selected === id}
+      isSelectable={context.isSelectable}
+      onClick={handleClick}
+    >
       {
         (React.Children.map(children, (child: ReactElement<TableCellProps>) =>
           React.cloneElement(child, {
