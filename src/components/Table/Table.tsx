@@ -31,11 +31,10 @@ const Table: FunctionComponent<TableProps> = ({
   const [isSelected, setSelected] = useState('' as string | number);
 
   const handleSelect = (event: React.MouseEvent<HTMLTableRowElement>, id: string | number) => {
-    const isAlreadySelected = typeof selected === 'undefined' ? isSelected === id : selected === id;
     if (typeof onSelect === 'function') {
-      onSelect(event, isAlreadySelected ? '' : id);
+      onSelect(event, id);
     } else {
-      setSelected(isAlreadySelected ? '' : id);
+      setSelected(id);
     }
   };
 
