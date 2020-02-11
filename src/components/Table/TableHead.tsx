@@ -12,6 +12,7 @@ export interface TableHeadProps {
 const StyledTableHead = styled('thead')`
   color: white;
   background-color: #003350;
+  box-shadow: 0 -1px 0 0 inset #000;
 `;
 
 const TableHead: FunctionComponent<TableHeadProps> = ({ children, ...rest }) => (

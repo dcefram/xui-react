@@ -14,7 +14,7 @@ const StyledTableBody = styled('tbody')`
 `;
 
 const TableBody: FunctionComponent<TableBodyProps> = ({ children, ...rest }) => (
-  <StyledTableBody>{children}</StyledTableBody>
+  <StyledTableBody {...rest}>{children}</StyledTableBody>
 );
 
 export default TableBody;
