@@ -62,7 +62,7 @@ const ColorPickerSelected = styled.div`
   width: 20px;
 `;
 
-const ColorPicker = ({ color, onChange }: Props) => {
+const ColorPicker = ({ color, onChange, ...rest }: Props) => {
   const [selected, setSelected] = useState('#2C2C2C');
   const [isVisible, setIsVisible] = useState(false);
   const palletRef = useRef(null);
@@ -108,7 +108,7 @@ const ColorPicker = ({ color, onChange }: Props) => {
   };
 
   return (
-    <Container>
+    <Container {...rest}>
       <ColorPickerSelected style={{ backgroundColor: selected }} onClick={handleShowPallets} />
       <ColorPalletOuterContainer
         tabIndex={-1}
