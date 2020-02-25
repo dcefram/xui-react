@@ -5,6 +5,7 @@ export interface InputProps {
   className: string;
   value?: string;
   placeholder?: string;
+  isFluid?: boolean;
   onChange?: (event: ChangeEvent) => void;
   onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
   onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
@@ -45,13 +46,12 @@ const StyledInput = styled('input')<InputProps>`
     }
   }
 
-  &.fluid {
+  ${({ isFluid }) =>
+    isFluid
+      ? `
     width: calc(100% - ${9 * 2}px);
-  }
-
-  &:not(.fluid) {
-    width: 200px;
-  }
+  `
+      : ''}
 `;
 
 const Input: FunctionComponent<InputProps> = props => <StyledInput {...props} />;
