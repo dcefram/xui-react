@@ -24,5 +24,6 @@ just mimic their feel by just winging it.
 - [x] Button
 - [x] Toggle
 - [x] Number Spinner
-- [ ] Checkbox
+- [x] Checkbox
+- [x] Color Picker
 - [ ] Radio Group

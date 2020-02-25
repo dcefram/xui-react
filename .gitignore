@@ -1,5 +1,8 @@
 .docz
 node_modules
-.vscode
 build
 .env
+
+# Editor configs
+.vscode
+*.sublime-*

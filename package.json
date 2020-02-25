@@ -1,12 +1,12 @@
 {
   "private": true,
   "name": "@dcefram/xui-react",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "license": "MIT",
   "repository": {
-    "url": "https://github.com/dcefram/xjs-react.git"
+    "url": "https://github.com/dcefram/xui-react.git"
   },
-  "homepage": "xjs-react.dcefram.now.sh",
+  "homepage": "xui-react.dcefram.now.sh",
   "scripts": {
     "dev": "docz dev",
     "build": "tsc --rootDir ./src --outDir ./build",
