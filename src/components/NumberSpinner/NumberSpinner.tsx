@@ -81,7 +81,7 @@ const ArrowUp = styled.div`
 
   position: absolute;
   right: 6px;
-  top: 10px;
+  top: 9px;
 
   &:hover {
     border-bottom: 6px solid white;
@@ -98,7 +98,7 @@ const ArrowDown = styled.div`
 
   position: absolute;
   right: 6px;
-  bottom: 10px;
+  bottom: 9px;
 
   &:hover {
     border-top: 6px solid white;
