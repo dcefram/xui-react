@@ -102,7 +102,7 @@ const ColorPicker = ({ color, onChange }: Props) => {
     setIsVisible(true);
   };
   const handleHidePallets = (event: any) => {
-    if (!event.relatedTarget === inputRef.current) {
+    if (event.relatedTarget !== inputRef.current) {
       setIsVisible(false);
     }
   };
