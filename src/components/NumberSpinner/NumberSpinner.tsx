@@ -10,6 +10,7 @@ export interface NumberSpinnerProps {
   min?: number;
   max?: number;
   step?: number;
+  isFluid?: boolean;
   onChange?: (value: number) => void;
   onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
   onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
@@ -20,7 +21,7 @@ const Container = styled.div`
   position: relative;
 `;
 
-const StyledInput = styled('input')`
+const StyledInput = styled.input`
   font-size: 12px;
   padding: 5px 9px 7px 9px;
   color: #ccc;
@@ -62,13 +63,12 @@ const StyledInput = styled('input')`
     }
   }
 
-  &.fluid {
+  ${({ isFluid }: any) =>
+    isFluid
+      ? `
     width: calc(100% - ${9 * 2}px);
-  }
-
-  &:not(.fluid) {
-    width: 200px;
-  }
+  `
+      : ''}
 `;
 
 const ArrowUp = styled.div`
@@ -77,7 +77,7 @@ const ArrowUp = styled.div`
   height: 0;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
-  border-bottom: 6px solid #666666;
+  border-bottom: 5px solid #666666;
 
   position: absolute;
   right: 6px;
@@ -94,7 +94,7 @@ const ArrowDown = styled.div`
   height: 0;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
-  border-top: 6px solid #666666;
+  border-top: 5px solid #666666;
 
   position: absolute;
   right: 6px;
