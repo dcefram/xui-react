@@ -66,6 +66,7 @@ const ColorPicker = ({ color, onChange }: Props) => {
   const [selected, setSelected] = useState('#2C2C2C');
   const [isVisible, setIsVisible] = useState(false);
   const palletRef = useRef(null);
+  const inputRef = useRef(null);
   const ROWS = 7;
   const COLUMNS = COLORS.length / ROWS;
 
@@ -87,6 +88,8 @@ const ColorPicker = ({ color, onChange }: Props) => {
     } else {
       setSelected(COLORS[index]);
     }
+
+    setIsVisible(false);
   };
   const handleColorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (typeof onChange === 'function') {
@@ -98,7 +101,11 @@ const ColorPicker = ({ color, onChange }: Props) => {
   const handleShowPallets = () => {
     setIsVisible(true);
   };
-  const handleHidePallets = () => setIsVisible(false);
+  const handleHidePallets = (event: any) => {
+    if (!event.relatedTarget === inputRef.current) {
+      setIsVisible(false);
+    }
+  };
 
   return (
     <Container>
@@ -110,7 +117,7 @@ const ColorPicker = ({ color, onChange }: Props) => {
         onBlur={handleHidePallets}
       >
         <ColorInputContainer>
-          <ColorInput value={selected} onChange={handleColorChange} />
+          <ColorInput ref={inputRef} value={selected} onChange={handleColorChange} />
         </ColorInputContainer>
         <ColorPalletInnerContainer>
           {Array.from(new Array(ROWS)).map((_, row: number) => (
