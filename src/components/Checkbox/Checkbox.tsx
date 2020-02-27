@@ -31,8 +31,10 @@ const Label = styled.label`
 `;
 
 const Text = styled.span`
+  align-items: center;
   color: #ccc;
-  font-size: 14px;
+  display: flex;
+  font-size: 11px;
   margin-left: 5px;
 `;
 
