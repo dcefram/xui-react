@@ -9,7 +9,11 @@ import Button from './Button/Button.tsx';
 
 # ThemeProvider
 
-Theming utility to style the UI.
+Theming utility to style the UI. **This also inserts a global style that sets the body's**
+**font to Roboto.**
+
+> IMPORTANT: Not yet fully implemented! Will do so soon though... that is
+> once I start working on an extension plugin.
 
 ## Properties
 
@@ -17,6 +21,8 @@ Theming utility to style the UI.
 
 ## Basic usage
 
-<ThemeProvider theme={{}}>
-  <Button>Hello</Button>
-</ThemeProvider>
+<Playground>
+  <ThemeProvider theme={{}}>
+    <Button>Hello</Button>
+  </ThemeProvider>
+</Playground>
