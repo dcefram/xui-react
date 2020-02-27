@@ -3,6 +3,10 @@ import styled from '@emotion/styled';
 
 import COLORS from './colors';
 
+export interface PalletContainerProps {
+  position?: string; // @TODO: Temporary workaround, correct solution is to use portals and check if right boundary is larger than window width
+}
+
 export interface Props {
   color?: string;
   onChange?: (color: string) => void;
@@ -12,11 +16,20 @@ const Container = styled.div`
   position: relative;
 `;
 
-const ColorPalletOuterContainer = styled.div`
+const getPosition = ({ position }: PalletContainerProps) => {
+  if (position === 'right') {
+    return 'left: 24px;';
+  }
+
+  return 'right: calc(100% + 2px);';
+};
+
+const ColorPalletOuterContainer = styled.div<PalletContainerProps>`
+  ${getPosition};
+
   background: #000;
   border: 1px solid #555555;
   bottom: 0;
-  left: 24px;
   outline: none;
   padding: 5px;
   position: absolute;
@@ -62,7 +75,12 @@ const ColorPickerSelected = styled.div`
   width: 20px;
 `;
 
-const ColorPicker = ({ color, onChange, ...rest }: Props) => {
+const ColorPicker = ({
+  color,
+  onChange,
+  position = 'right',
+  ...rest
+}: Props & PalletContainerProps) => {
   const [selected, setSelected] = useState('#2C2C2C');
   const [isVisible, setIsVisible] = useState(false);
   const palletRef = useRef(null);
@@ -114,6 +132,7 @@ const ColorPicker = ({ color, onChange, ...rest }: Props) => {
         tabIndex={-1}
         ref={palletRef}
         style={{ display: isVisible ? 'block' : 'none' }}
+        position={position}
         onBlur={handleHidePallets}
       >
         <ColorInputContainer>
