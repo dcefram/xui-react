@@ -28,3 +28,24 @@ npm i @dcefram/xui-react
 # with yarn
 yarn add @dcefram/xui-react
 ```
+
+## Usage
+
+```tsx
+import React from 'react';
+import ThemeProvider from '@dcefram/xui-react/components/ThemeProvider';
+import Button from '@dcefram/xui-react/components/Button';
+
+export default function() {
+  return (
+    <ThemeProvider>
+      <Button>Hi!</Button>
+    </ThemeProvider>
+  );
+}
+```
+
+Using ThemeProvider would add some global styles which includes setting the font-family to Roboto
+as this is the default font used by XSplit Broadcaster's source properties window.
+
+Further details on the [ThemeProvider component is in its own page](/src-components-theme-provider)
