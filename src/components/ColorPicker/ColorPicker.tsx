@@ -10,6 +10,7 @@ export interface PalletContainerProps {
 export interface Props {
   color?: string;
   onChange?: (color: string) => void;
+  onPalleteHover?: (color: string) => void;
 }
 
 const Container = styled.div`
@@ -78,10 +79,12 @@ const ColorPickerSelected = styled.div`
 const ColorPicker = ({
   color,
   onChange,
+  onPalleteHover,
   position = 'right',
   ...rest
 }: Props & PalletContainerProps) => {
   const [selected, setSelected] = useState('#2C2C2C');
+  const [hovered, setHovered] = useState('');
   const [isVisible, setIsVisible] = useState(false);
   const palletRef = useRef(null);
   const inputRef = useRef(null);
@@ -109,6 +112,12 @@ const ColorPicker = ({
 
     setIsVisible(false);
   };
+  const handleColorHover = (index: number) => () => {
+    if (typeof onPalleteHover === 'function') {
+      setHovered(COLORS[index]);
+      onPalleteHover(COLORS[index]);
+    }
+  };
   const handleColorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (typeof onChange === 'function') {
       onChange(event.target.value);
@@ -122,12 +131,20 @@ const ColorPicker = ({
   const handleHidePallets = (event: any) => {
     if (event.relatedTarget !== inputRef.current) {
       setIsVisible(false);
+
+      if (typeof onPalleteHover === 'function') {
+        setHovered('');
+        onPalleteHover('');
+      }
     }
   };
 
   return (
     <Container {...rest}>
-      <ColorPickerSelected style={{ backgroundColor: selected }} onClick={handleShowPallets} />
+      <ColorPickerSelected
+        style={{ backgroundColor: hovered || selected }}
+        onClick={handleShowPallets}
+      />
       <ColorPalletOuterContainer
         tabIndex={-1}
         ref={palletRef}
@@ -136,7 +153,7 @@ const ColorPicker = ({
         onBlur={handleHidePallets}
       >
         <ColorInputContainer>
-          <ColorInput ref={inputRef} value={selected} onChange={handleColorChange} />
+          <ColorInput ref={inputRef} value={hovered || selected} onChange={handleColorChange} />
         </ColorInputContainer>
         <ColorPalletInnerContainer>
           {Array.from(new Array(ROWS)).map((_, row: number) => (
@@ -151,11 +168,14 @@ const ColorPicker = ({
                       backgroundColor: COLORS[index]
                     }}
                     className={
-                      COLORS[index].toLowerCase() === String(selected).toLowerCase()
+                      COLORS[index].toLowerCase() === String(hovered).toLowerCase() ||
+                      (COLORS[index].toLowerCase() === String(selected).toLowerCase() &&
+                        hovered === '')
                         ? 'active'
                         : undefined
                     }
                     onClick={handleColorSelect(index)}
+                    onMouseOver={handleColorHover(index)}
                   />
                 );
               })}
