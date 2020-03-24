@@ -134,7 +134,7 @@ const ColorPicker = ({
 
       if (typeof onPalleteHover === 'function') {
         setHovered('');
-        onPalleteHover('');
+        onPalleteHover(color || '');
       }
     }
   };
