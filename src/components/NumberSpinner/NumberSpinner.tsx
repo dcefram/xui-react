@@ -106,11 +106,25 @@ const ArrowDown = styled.div`
 `;
 
 const NumberSpinner: FunctionComponent<NumberSpinnerProps> = props => {
-  const [value, setValue]: any = useState(props.value || 0);
+  const [value, setValue]: any = useState(props.value || props.min || 0);
 
   useEffect(() => {
-    setValue(value);
-  }, [value]);
+    if (typeof props.value === 'undefined') return;
+
+    const min = Number(props.min);
+    const max = Number(props.max);
+    let processed = Number(props.value);
+
+    if (typeof props.min !== 'undefined' && props.value < min) {
+      processed = min;
+    }
+
+    if (typeof props.max !== 'undefined' && props.value > max) {
+      processed = max;
+    }
+
+    setValue(processed);
+  }, [props.value]);
 
   const handleIncrement = () => {
     const step = props.step ? Number(props.step) : 1;
@@ -137,7 +151,6 @@ const NumberSpinner: FunctionComponent<NumberSpinnerProps> = props => {
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.value);
     if (event.target.value.trim() === '') {
       setValue('');
       return;

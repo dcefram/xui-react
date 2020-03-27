@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@dcefram/xui-react",
-  "version": "0.1.28",
+  "version": "0.1.31",
   "license": "MIT",
   "repository": {
     "url": "https://github.com/dcefram/xui-react.git"
@@ -19,8 +19,8 @@
     "docz": "next",
     "emotion-theming": "^10.0.27",
     "polished": "^3.4.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-useportal": "^1.0.13",
     "scheduler": "^0.15.0"
   },
