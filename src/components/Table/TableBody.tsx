@@ -10,6 +10,7 @@ export interface TableBodyProps {
 
 const StyledTableBody = styled('tbody')`
   background-color: #212121;
+  box-shadow: none;
   color: #ccc;
 `;
 
