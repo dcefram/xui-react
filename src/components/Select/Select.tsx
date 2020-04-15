@@ -4,17 +4,20 @@ import React, {
   useState,
   useCallback,
   useRef,
-  useEffect
+  useEffect,
 } from 'react';
 import usePortal from 'react-useportal';
+import { FixedSizeList as List } from 'react-window';
 
 import { OptionProps } from './Option';
 import { StyledContainer, StyledValue, StyledArrow, StyledListContainer } from './StyledSelect';
 
 export interface SelectProps {
   children?: ReactElement<OptionProps>[];
-  value?: string;
+  value?: string | number;
+  width?: number;
   disabled?: boolean;
+  style?: any;
   onChange?: (value: any) => void;
 }
 
@@ -23,6 +26,8 @@ const Select: FunctionComponent<SelectProps> = ({
   disabled,
   onChange,
   children = [],
+  width = 300,
+  style = {},
   ...rest
 }) => {
   const containerRef = useRef(null);
@@ -31,7 +36,7 @@ const Select: FunctionComponent<SelectProps> = ({
   const [internalValue, setInternalValue] = useState(value);
   const [dropdownStyle, setDropdownStyle] = useState({});
   const handleValueClick = useCallback(
-    event => {
+    (event) => {
       const canExpand = !disabled && children.length > 0;
 
       if (expanded) {
@@ -57,7 +62,7 @@ const Select: FunctionComponent<SelectProps> = ({
       setDropdownStyle({
         top: bottom + scrollOffset,
         left,
-        width
+        width,
       });
     }
   };
@@ -79,7 +84,7 @@ const Select: FunctionComponent<SelectProps> = ({
     onClose: handlePortalClose,
     onOpen: handlePortalOpen,
     closeOnOutsideClick: true,
-    closeOnEsc: true
+    closeOnEsc: true,
   });
 
   useEffect(() => {
@@ -91,8 +96,25 @@ const Select: FunctionComponent<SelectProps> = ({
     });
   }, [value]);
 
+  function Items({ index, style }: any) {
+    const child = children[index];
+    return React.cloneElement(child, {
+      style: { ...style, height: 'auto' },
+      selected: internalValue === child.props.value,
+      onClick: handleOptionClick,
+    });
+  }
+
   return (
-    <StyledContainer ref={containerRef} disabled={disabled} {...rest}>
+    <StyledContainer
+      ref={containerRef}
+      disabled={disabled}
+      style={{
+        width,
+        ...style,
+      }}
+      {...rest}
+    >
       <StyledValue className="xui-styled-value" onClick={handleValueClick}>
         {label}
         <StyledArrow className="xui-styled-arrow" expanded={expanded} />
@@ -101,14 +123,9 @@ const Select: FunctionComponent<SelectProps> = ({
       {isOpen && (
         <Portal>
           <StyledListContainer style={dropdownStyle}>
-            {
-              (React.Children.map(children, (child: ReactElement<OptionProps>) =>
-                React.cloneElement(child, {
-                  selected: internalValue === child.props.value,
-                  onClick: handleOptionClick
-                })
-              ) as unknown) as ReactElement<OptionProps>
-            }
+            <List height={148} itemCount={(children || []).length} itemSize={25} width={width - 2}>
+              {Items}
+            </List>
           </StyledListContainer>
         </Portal>
       )}

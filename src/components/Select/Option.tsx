@@ -7,6 +7,7 @@ export interface OptionProps {
   selected: boolean;
   disabled: boolean;
   onClick: (event: React.MouseEvent, value: any) => void;
+  style?: any;
   className?: string;
 }
 
@@ -16,6 +17,7 @@ const StyledOpton = styled('li')`
   padding: 6px 8px 5px;
   cursor: pointer;
   overflow: hidden;
+  box-sizing: border-box;
 
   &.selected:not(.disabled),
   &:hover:not(.disabled) {
