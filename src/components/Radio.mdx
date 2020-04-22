@@ -1,0 +1,25 @@
+---
+name: Radio
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+import Radio from './Radio/Radio.tsx';
+import RadioGroup from './Radio/RadioGroup.tsx';
+
+# Radio
+
+Radio is normally used for controls that would allow users to type in data.
+
+## Properties
+
+<Props of={Radio} />
+
+## Basic usage
+
+<Playground>
+  <RadioGroup>
+    <Radio label="Test Radio" value="1" />
+    <Radio label="Test Radio" value="2" />
+  </RadioGroup>
+</Playground>

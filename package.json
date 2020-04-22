@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@dcefram/xui-react",
-  "version": "0.1.35",
+  "version": "0.1.36",
   "license": "MIT",
   "repository": {
     "url": "https://github.com/dcefram/xui-react.git"
@@ -23,7 +23,8 @@
     "react-dom": "^16.13.1",
     "react-useportal": "^1.0.13",
     "react-window": "^1.8.5",
-    "scheduler": "^0.15.0"
+    "scheduler": "^0.15.0",
+    "shortid": "^2.2.15"
   },
   "devDependencies": {
     "@types/react": "^16.8.23",
