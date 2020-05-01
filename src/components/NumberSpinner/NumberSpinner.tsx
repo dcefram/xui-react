@@ -158,29 +158,37 @@ const NumberSpinner: FunctionComponent<NumberSpinnerProps> = props => {
 
     const value = Number(event.target.value);
 
-    // Made this readable on first glance
-    let newValue = value;
-
-    if (props.min !== undefined && value < props.min) {
-      newValue = props.min;
-    } else if (props.max !== undefined && value > props.max) {
-      newValue = props.max;
-    }
-
     if (typeof props.onChange === 'function') {
-      props.onChange(newValue);
+      props.onChange(value);
     } else {
-      setValue(newValue);
+      setValue(value);
     }
   };
+
+  const handleBlur = () => {
+    const fn = typeof props.onBlur === 'function' ? props.onBlur : setValue;
+
+    if (typeof props.min !== 'undefined' && value < props.min) {
+      fn(props.min);
+      return;
+    }
+
+    if (typeof props.max !== 'undefined' && value > props.max) {
+      fn(props.max);
+      return;
+    }
+
+    fn(value);
+  }
 
   return (
     <Container>
       <StyledInput
         type="number"
         value={value}
-        {...omit(props, ['onChange'])}
         onChange={handleChange}
+        onBlur={handleBlur}
+        {...omit(props, ['onBlur'])}
       />
       <ArrowUp onClick={handleIncrement} />
       <ArrowDown onClick={handleDecrement} />
