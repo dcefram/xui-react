@@ -124,6 +124,7 @@ const NumberSpinner: FunctionComponent<NumberSpinnerProps> = props => {
     }
 
     setValue(processed);
+
   }, [props.value]);
 
   const handleIncrement = () => {
@@ -188,7 +189,7 @@ const NumberSpinner: FunctionComponent<NumberSpinnerProps> = props => {
         value={value}
         onChange={handleChange}
         onBlur={handleBlur}
-        {...omit(props, ['onBlur'])}
+        {...omit(props, ['onBlur', 'value', 'min', 'max'])}
       />
       <ArrowUp onClick={handleIncrement} />
       <ArrowDown onClick={handleDecrement} />
