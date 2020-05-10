@@ -5,6 +5,7 @@ import React, {
   useCallback,
   useRef,
   useEffect,
+  useLayoutEffect
 } from 'react';
 import usePortal from 'react-useportal';
 import { FixedSizeList as List } from 'react-window';
@@ -31,12 +32,13 @@ const Select: FunctionComponent<SelectProps> = ({
   ...rest
 }) => {
   const containerRef = useRef(null);
+  const listRef = useRef(null);
   const [expanded, setExpanded] = useState(false);
   const [label, setLabel] = useState('');
   const [internalValue, setInternalValue] = useState(value);
   const [dropdownStyle, setDropdownStyle] = useState({});
   const handleValueClick = useCallback(
-    (event) => {
+    event => {
       const canExpand = !disabled && children.length > 0;
 
       if (expanded) {
@@ -62,7 +64,7 @@ const Select: FunctionComponent<SelectProps> = ({
       setDropdownStyle({
         top: bottom + scrollOffset,
         left,
-        width,
+        width
       });
     }
   };
@@ -84,7 +86,7 @@ const Select: FunctionComponent<SelectProps> = ({
     onClose: handlePortalClose,
     onOpen: handlePortalOpen,
     closeOnOutsideClick: true,
-    closeOnEsc: true,
+    closeOnEsc: true
   });
 
   useEffect(() => {
@@ -96,12 +98,21 @@ const Select: FunctionComponent<SelectProps> = ({
     });
   }, [value]);
 
+  useLayoutEffect(() => {
+    const selectedIndex = children.findIndex(child => child.props.value === internalValue);
+
+    if (listRef.current && selectedIndex > -1) {
+      ((listRef.current as unknown) as any).scrollToItem(selectedIndex, "center");
+    }
+  }, [isOpen]);
+
   function Items({ index, style }: any) {
     const child = children[index];
+
     return React.cloneElement(child, {
       style: { ...style, height: 'auto' },
       selected: internalValue === child.props.value,
-      onClick: handleOptionClick,
+      onClick: handleOptionClick
     });
   }
 
@@ -111,7 +122,7 @@ const Select: FunctionComponent<SelectProps> = ({
       disabled={disabled}
       style={{
         width,
-        ...style,
+        ...style
       }}
       {...rest}
     >
@@ -123,7 +134,13 @@ const Select: FunctionComponent<SelectProps> = ({
       {isOpen && (
         <Portal>
           <StyledListContainer style={dropdownStyle}>
-            <List height={148} itemCount={(children || []).length} itemSize={25} width={width - 2}>
+            <List
+              height={148}
+              itemCount={(children || []).length}
+              itemSize={25}
+              width={width - 2}
+              ref={listRef}
+            >
               {Items}
             </List>
           </StyledListContainer>

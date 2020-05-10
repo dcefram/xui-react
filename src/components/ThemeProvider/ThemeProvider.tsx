@@ -25,8 +25,8 @@ function ThemeProvider<Theme>({ theme, children }: ThemeProviderProps<Theme>): R
             background-color: #000;
             background-repeat: no-repeat;
             background-position: center;
-            height: 10px;
-            width: 10px;
+            height: 0;
+            width: 0;
           }
           
           ::-webkit-scrollbar-thumb {
