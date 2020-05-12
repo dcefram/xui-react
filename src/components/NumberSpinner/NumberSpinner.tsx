@@ -14,6 +14,8 @@ export interface NumberSpinnerProps {
   onChange?: (value: number) => void;
   onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
   onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
+  onIncrement?: (value: number) => void;
+  onDecrement?: (value: number) => void;
 }
 
 const Container = styled.div`
@@ -132,20 +134,21 @@ const NumberSpinner: FunctionComponent<NumberSpinnerProps> = props => {
     const newValue =
       props.max === undefined || value + step <= props.max ? value + step : props.max;
 
-    if (typeof props.onChange === 'function') {
-      props.onChange(newValue);
+    if (typeof props.onIncrement === 'function') {
+      props.onIncrement(newValue);
     } else {
       setValue(newValue);
     }
   };
 
   const handleDecrement = () => {
+    const fn = typeof props.onBlur === 'function' ? props.onBlur : setValue;
     const step = props.step ? Number(props.step) : 1;
     const newValue =
       props.min === undefined || value - step >= props.min ? value - step : props.min;
 
-    if (typeof props.onChange === 'function') {
-      props.onChange(newValue);
+    if (typeof props.onDecrement === 'function') {
+      props.onDecrement(newValue);
     } else {
       setValue(newValue);
     }
