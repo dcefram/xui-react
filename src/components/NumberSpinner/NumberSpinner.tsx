@@ -126,7 +126,6 @@ const NumberSpinner: FunctionComponent<NumberSpinnerProps> = props => {
     }
 
     setValue(processed);
-
   }, [props.value]);
 
   const handleIncrement = () => {
@@ -162,11 +161,7 @@ const NumberSpinner: FunctionComponent<NumberSpinnerProps> = props => {
 
     const value = Number(event.target.value);
 
-    if (typeof props.onChange === 'function') {
-      props.onChange(value);
-    } else {
-      setValue(value);
-    }
+    setValue(value);
   };
 
   const handleBlur = () => {
@@ -183,7 +178,24 @@ const NumberSpinner: FunctionComponent<NumberSpinnerProps> = props => {
     }
 
     fn(value);
-  }
+  };
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.which !== 13) return;
+    if (typeof props.onChange !== 'function') return;
+
+    if (typeof props.min !== 'undefined' && value < props.min) {
+      props.onChange(props.min);
+      return;
+    }
+
+    if (typeof props.max !== 'undefined' && value > props.max) {
+      props.onChange(props.max);
+      return;
+    }
+
+    props.onChange(value);
+  };
 
   return (
     <Container>
@@ -192,7 +204,8 @@ const NumberSpinner: FunctionComponent<NumberSpinnerProps> = props => {
         value={value}
         onChange={handleChange}
         onBlur={handleBlur}
-        {...omit(props, ['onBlur', 'value', 'min', 'max'])}
+        onKeyPress={handleKeyPress}
+        {...omit(props, ['onBlur', 'onKeyPress', 'value', 'min', 'max'])}
       />
       <ArrowUp onClick={handleIncrement} />
       <ArrowDown onClick={handleDecrement} />
