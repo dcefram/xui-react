@@ -119,10 +119,19 @@ const ColorPicker = ({
     }
   };
   const handleColorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (typeof onPalleteHover === 'function') {
+      onPalleteHover(event.target.value);
+    }
+
+    setHovered(event.target.value);
+  };
+  const handleColorKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.which !== 13) return;
+
     if (typeof onChange === 'function') {
-      onChange(event.target.value);
+      onChange(hovered);
     } else {
-      setSelected(event.target.value);
+      setSelected(hovered);
     }
   };
   const handleShowPallets = () => {
@@ -153,7 +162,12 @@ const ColorPicker = ({
         onBlur={handleHidePallets}
       >
         <ColorInputContainer>
-          <ColorInput ref={inputRef} value={hovered || selected} onChange={handleColorChange} />
+          <ColorInput
+            ref={inputRef}
+            value={hovered || selected}
+            onChange={handleColorChange}
+            onKeyPress={handleColorKeyPress}
+          />
         </ColorInputContainer>
         <ColorPalletInnerContainer>
           {Array.from(new Array(ROWS)).map((_, row: number) => (
