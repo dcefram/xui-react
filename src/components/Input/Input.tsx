@@ -13,16 +13,18 @@ export interface InputProps {
 
 const StyledInput = styled('input')<InputProps>`
   font-size: 12px;
-  padding: 5px 9px 7px 9px;
+  padding: 0;
   color: #ccc;
   background-color: #393939;
   line-height: 17px;
   text-overflow: ellipsis;
+  text-indent: 6px;
   overflow: hidden;
   white-space: nowrap;
   display: inline-block;
   border: 1px solid #040404;
   outline: none;
+  height: 22px;
 
   &:hover {
     background-color: #464646;

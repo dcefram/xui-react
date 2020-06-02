@@ -137,7 +137,7 @@ const Select: FunctionComponent<SelectProps> = ({
             <List
               height={148}
               itemCount={(children || []).length}
-              itemSize={25}
+              itemSize={26}
               width={width - 2}
               ref={listRef}
             >

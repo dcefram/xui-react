@@ -28,7 +28,7 @@ export const StyledArrow = styled('div')<ArrowProps>`
 export const StyledValue = styled('div')`
   max-width: -webkit-fill-available;
   background-color: #393939;
-  padding: 5px 25px 4px 11px;
+  padding: 2.4px 25px 2.4px 6px;
   padding-right: 25px;
   width: 100%;
   line-height: 17px;

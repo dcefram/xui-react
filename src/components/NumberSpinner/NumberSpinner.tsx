@@ -25,11 +25,12 @@ const Container = styled.div`
 
 const StyledInput = styled.input`
   font-size: 12px;
-  padding: 5px 9px 7px 9px;
+  padding: 0;
   color: #ccc;
   background-color: #393939;
   line-height: 17px;
   text-overflow: ellipsis;
+  text-indent: 6px;
   overflow: hidden;
   white-space: nowrap;
   display: inline-block;
@@ -37,6 +38,7 @@ const StyledInput = styled.input`
   outline: none;
   appearance: textfield;
   position: relative;
+  height: 22px;
 
   &:hover {
     background-color: #464646;
@@ -83,7 +85,7 @@ const ArrowUp = styled.div`
 
   position: absolute;
   right: 6px;
-  top: 9px;
+  top: 6px;
 
   &:hover {
     border-bottom: 6px solid white;
@@ -100,7 +102,7 @@ const ArrowDown = styled.div`
 
   position: absolute;
   right: 6px;
-  bottom: 9px;
+  bottom: 6px;
 
   &:hover {
     border-top: 6px solid white;
