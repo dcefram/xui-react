@@ -85,6 +85,7 @@ const ColorPicker = ({
 }: Props & PalletContainerProps) => {
   const [selected, setSelected] = useState('#2C2C2C');
   const [hovered, setHovered] = useState('');
+  const [inputValue, setInputValue] = useState('');
   const [isVisible, setIsVisible] = useState(false);
   const palletRef = useRef(null);
   const inputRef = useRef(null);
@@ -119,19 +120,19 @@ const ColorPicker = ({
     }
   };
   const handleColorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (typeof onPalleteHover === 'function') {
-      onPalleteHover(event.target.value);
-    }
-
-    setHovered(event.target.value);
+    setInputValue(event.target.value);
   };
   const handleColorKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.which !== 13) return;
+    if (!/#([0-9A-F]{6}$)|#([0-9A-F]{3}$)/i.test(inputValue)) {
+      setInputValue(selected);
+      return;
+    }
 
     if (typeof onChange === 'function') {
-      onChange(hovered);
+      onChange(inputValue);
     } else {
-      setSelected(hovered);
+      setSelected(inputValue);
     }
   };
   const handleShowPallets = () => {
@@ -164,7 +165,7 @@ const ColorPicker = ({
         <ColorInputContainer>
           <ColorInput
             ref={inputRef}
-            value={hovered || selected}
+            value={inputValue || hovered || selected}
             onChange={handleColorChange}
             onKeyPress={handleColorKeyPress}
           />
