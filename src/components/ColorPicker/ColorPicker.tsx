@@ -136,6 +136,7 @@ const ColorPicker = ({
     }
   };
   const handleShowPallets = () => {
+    setInputValue('');
     setIsVisible(true);
   };
   const handleHidePallets = (event: any) => {
