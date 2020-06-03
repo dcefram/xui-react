@@ -53,6 +53,7 @@ const Radio: FunctionComponent<RadioProps> = ({
   checked,
   onChange,
   label,
+  className,
   ...rest
 }) => {
   const [id, setId] = useState('');
@@ -81,7 +82,7 @@ const Radio: FunctionComponent<RadioProps> = ({
   }
 
   return (
-    <div>
+    <div className={className}>
       <HiddenInput
         type="radio"
         id={id}
