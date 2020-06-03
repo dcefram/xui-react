@@ -170,12 +170,12 @@ const NumberSpinner: FunctionComponent<NumberSpinnerProps> = props => {
     const fn = typeof props.onBlur === 'function' ? props.onBlur : setValue;
 
     if (typeof props.min !== 'undefined' && value < props.min) {
-      fn(props.min);
+      fn(props.value);
       return;
     }
 
     if (typeof props.max !== 'undefined' && value > props.max) {
-      fn(props.max);
+      fn(props.value);
       return;
     }
 
