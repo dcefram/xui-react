@@ -11,6 +11,7 @@ export interface Props {
   color?: string;
   onChange?: (color: string) => void;
   onPalleteHover?: (color: string) => void;
+  onInputChange?: (color: string) => void;
 }
 
 const Container = styled.div`
@@ -80,6 +81,7 @@ const ColorPicker = ({
   color,
   onChange,
   onPalleteHover,
+  onInputChange,
   position = 'right',
   ...rest
 }: Props & PalletContainerProps) => {
@@ -129,8 +131,8 @@ const ColorPicker = ({
       return;
     }
 
-    if (typeof onChange === 'function') {
-      onChange(inputValue);
+    if (typeof onInputChange === 'function') {
+      onInputChange(inputValue);
     } else {
       setSelected(inputValue);
     }
