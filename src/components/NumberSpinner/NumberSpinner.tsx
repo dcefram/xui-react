@@ -167,19 +167,18 @@ const NumberSpinner: FunctionComponent<NumberSpinnerProps> = props => {
   };
 
   const handleBlur = () => {
-    const fn = typeof props.onBlur === 'function' ? props.onBlur : setValue;
-
+    let newValue = value;
     if (typeof props.min !== 'undefined' && value < props.min) {
-      fn(props.value);
-      return;
+      newValue = props.value;
+    } else if (typeof props.max !== 'undefined' && value > props.max) {
+      newValue = props.value;
     }
 
-    if (typeof props.max !== 'undefined' && value > props.max) {
-      fn(props.value);
-      return;
+    if (typeof props.onBlur === 'function') {
+      props.onBlur(newValue);
     }
 
-    fn(value);
+    setValue(newValue);
   };
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
