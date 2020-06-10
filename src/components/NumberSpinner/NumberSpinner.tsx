@@ -21,6 +21,7 @@ export interface NumberSpinnerProps {
 const Container = styled.div`
   display: inline-block;
   position: relative;
+  height: 24px;
 `;
 
 const StyledInput = styled.input`
@@ -28,7 +29,7 @@ const StyledInput = styled.input`
   padding: 0;
   color: #ccc;
   background-color: #393939;
-  line-height: 17px;
+  line-height: 16px;
   text-overflow: ellipsis;
   text-indent: 6px;
   overflow: hidden;
