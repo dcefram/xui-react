@@ -207,7 +207,7 @@ const NumberSpinner: FunctionComponent<NumberSpinnerProps> = props => {
         onChange={handleChange}
         onBlur={handleBlur}
         onKeyPress={handleKeyPress}
-        {...omit(props, ['onBlur', 'onKeyPress', 'value', 'min', 'max'])}
+        {...omit(props, ['onBlur', 'onKeyPress', 'onChange', 'value', 'min', 'max'])}
       />
       <ArrowUp onClick={handleIncrement} />
       <ArrowDown onClick={handleDecrement} />
