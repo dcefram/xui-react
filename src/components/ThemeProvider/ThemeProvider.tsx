@@ -13,14 +13,14 @@ function ThemeProvider<Theme>({ theme, children }: ThemeProviderProps<Theme>): R
       <Global
         styles={css`
           body {
-            font-family: roboto, 'Malgun Gothic', sans-serif;
+            font-family: 'Segoe UI Regular', roboto, 'Malgun Gothic', sans-serif;
           }
-          
+
           ::-webkit-scrollbar {
             width: 12px;
             cursor: pointer;
           }
-          
+
           ::-webkit-scrollbar-button {
             background-color: #000;
             background-repeat: no-repeat;
@@ -28,14 +28,14 @@ function ThemeProvider<Theme>({ theme, children }: ThemeProviderProps<Theme>): R
             height: 0;
             width: 0;
           }
-          
+
           ::-webkit-scrollbar-thumb {
             background-color: #393939;
             border: 1px solid #000;
             cursor: pointer;
             width: 10px;
           }
-          
+
           ::-webkit-scrollbar-track {
             background-color: #000;
             width: 12px;

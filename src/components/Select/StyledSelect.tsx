@@ -14,27 +14,36 @@ const getArrow = ({ expanded }: ArrowProps) => {
 };
 
 export const StyledArrow = styled('div')<ArrowProps>`
-  ${getArrow};
+  &:after {
+    ${getArrow};
 
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    content: '';
+    height: 0;
+    width: 0;
+  }
+
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
   position: absolute;
   right: 6px;
-  top: 12px;
-  width: 0;
+  top: 0;
 `;
 
 export const StyledValue = styled('div')`
   max-width: -webkit-fill-available;
   background-color: #393939;
+  box-sizing: border-box;
   padding: 2.4px 25px 2.4px 6px;
   padding-right: 25px;
   width: 100%;
-  line-height: 17px;
-  font-size: 12px;
+  line-height: 14px;
+  font-size: 11px;
   color: #ccc;
-  height: 17px;
+  height: 22px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -61,7 +70,7 @@ export const StyledContainer = styled('div')<any>`
   position: relative;
   display: inline-block;
   outline: none;
-  font-size: 12px;
+  font-size: 11px;
   display: inline-block;
   min-width: 50px;
   cursor: pointer;

@@ -102,7 +102,7 @@ const Select: FunctionComponent<SelectProps> = ({
     const selectedIndex = children.findIndex(child => child.props.value === internalValue);
 
     if (listRef.current && selectedIndex > -1) {
-      ((listRef.current as unknown) as any).scrollToItem(selectedIndex, "center");
+      ((listRef.current as unknown) as any).scrollToItem(selectedIndex, 'center');
     }
   }, [isOpen]);
 
@@ -137,7 +137,7 @@ const Select: FunctionComponent<SelectProps> = ({
             <List
               height={148}
               itemCount={(children || []).length}
-              itemSize={26}
+              itemSize={22}
               width={width - 2}
               ref={listRef}
             >

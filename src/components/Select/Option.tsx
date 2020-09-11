@@ -13,13 +13,13 @@ export interface OptionProps {
 
 const StyledOpton = styled('li')`
   color: #888;
-  font-size: 12px;
+  font-size: 11px;
   padding: 0 5px;
   cursor: pointer;
   overflow: hidden;
   box-sizing: border-box;
-  min-height: 26px;
-  line-height: 26px;
+  min-height: 22px;
+  line-height: 22px;
 
   &.selected:not(.disabled),
   &:hover:not(.disabled) {
